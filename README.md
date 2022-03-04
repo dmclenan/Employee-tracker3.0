@@ -7,9 +7,9 @@ I created a interface that allows me to easily view and interact with informatio
 <iframe src="https://drive.google.com/file/d/1KmmBfLK5myoEW3kGzwYPYj-JqymI-BqK/preview" width="640" height="480"></iframe>
 
 
-## Install
+## To run server
 
-Install with [npm](https://www.npmjs.com/):
+
 
 ```sh
 $ start server node index.js
