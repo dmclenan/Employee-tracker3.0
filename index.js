@@ -104,70 +104,87 @@ function viewDepartments() {
         .then(() => mainMenu());
 }
 
+
+
+
 function addEmployee() {
     prompt([
-            {
-                type: "input",
-                message: "Enter the employee's first name",
-                name: "firstName"
-            },
-            {
-                type: "input",
-                message: "Enter the employee's last name",
-                name: "lastName"
-            },
-            {
-                type: "input",
-                message: "Enter the employee's role ID",
-                name: "addEmployRole"
-            },
-            {
-                type: "input",
-                message: "Enter the employee's manager ID",
-                name: "addEmployMan"
-            }
-        ])
+        {
+            type: "input",
+            message: "Enter the employee's first name",
+            name: "firstName"
+        },
+        {
+            type: "input",
+            message: "Enter the employee's last name",
+            name: "lastName"
+        },
+        {
+            type: "input",
+            message: "Enter the employee's role ID",
+            name: "addEmployRole"
+        },
+        {
+            type: "input",
+            message: "Enter the employee's manager ID",
+            name: "addEmployMan"
+        }
+
+    ])
+
 }
 function addDept() {
     prompt({
-            type: "input",
-            message: "Enter the name of the new department",
-            name: "newDept"
-        })
+        type: "input",
+        message: "Enter the name of the new department",
+        name: "newDept"
+    })
+        .then((answer) => {
+
+            db.addDepartment(answer.newDept)
+                .then(([rows]) => {
+                    let departments = rows;
+                    console.log("/n");
+                    console.table(departments)
+                })
+                .then(() => mainMenu());
+
+        });
 }
 function addRole() {
     prompt([
-            {
-                type: "input",
-                message: "Enter the employee's title",
-                name: "roleTitle"
-            },
-            {
-                type: "input",
-                message: "Enter the employee's salary",
-                name: "roleSalary"
-            },
-            {
-                type: "input",
-                message: "Enter the employee's department ID",
-                name: "roleDept"
-            }
-        ])
+        {
+            type: "input",
+            message: "Enter the employee's title",
+            name: "roleTitle"
+        },
+        {
+            type: "input",
+            message: "Enter the employee's salary",
+            name: "roleSalary"
+        },
+        {
+            type: "input",
+            message: "Enter the employee's department ID",
+            name: "roleDept"
+        }
+    ])
+        .then(() => mainMenu());
 }
 function updateEmployeeRole() {
     prompt([
-            {
-                type: "input",
-                message: "Enter the employee's ID you want to be updated",
-                name: "updateEmploy"
-            },
-            {
-                type: "input",
-                message: "Enter the new role ID for that employee",
-                name: "newRole"
-            }
-        ])
-
+        {
+            type: "input",
+            message: "Enter the employee's ID you want to be updated",
+            name: "updateEmploy"
+        },
+        {
+            type: "input",
+            message: "Enter the new role ID for that employee",
+            name: "newRole"
+        }
+    ])
+        .then(() => mainMenu());
 }
 function quit() {
     console.log("goodbye!");
