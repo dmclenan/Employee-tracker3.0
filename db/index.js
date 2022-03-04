@@ -23,10 +23,14 @@ class DB {
     // create a new employee 
     addDepartment(name) {
         return this.connection.promise().query( 
-            'INSERT INTO department (name) VALUES (' + name + ')'
+            'INSERT INTO department (name) VALUES (?)',[name]
         )
     }
-
+    addRole(name) {
+        return this.connection.promise().query( 
+            'INSERT INTO role (name) VALUES (?)',[name]
+        )
+    }
 
 }
 

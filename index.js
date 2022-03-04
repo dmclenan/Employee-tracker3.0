@@ -169,7 +169,17 @@ function addRole() {
             name: "roleDept"
         }
     ])
-        .then(() => mainMenu());
+    .then((answer) => {
+
+        db.addRole(answer.newRole)
+            .then(([rows]) => {
+                let roles = rows;
+                console.log("/n");
+                console.table(roles)
+            })
+            .then(() => mainMenu());
+
+    });
 }
 function updateEmployeeRole() {
     prompt([
