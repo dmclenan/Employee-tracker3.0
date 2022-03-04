@@ -129,9 +129,20 @@ function addEmployee() {
             message: "Enter the employee's manager ID",
             name: "addEmployMan"
         }
-
     ])
+    .then(answer => {
+    let employee = {
+        first_name: answer.firstName,
+        last_name: answer.lastName,
+        role_id: answer.addEmployRole,
+        manager_id: answer.addEmployMan,
 
+    }
+        db.addEmployee(employee)
+            .then(() => console.log('successfullyadded'))
+            .then(() => mainMenu());
+
+    });
 }
 function addDept() {
     prompt({
