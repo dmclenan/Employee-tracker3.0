@@ -14,3 +14,7 @@ I created a interface that allows me to easily view and interact with informatio
 ```sh
 $ start server node index.js
 ```
+
+
+https://user-images.githubusercontent.com/69438529/156856903-8c7c10e1-098a-414e-a482-5a1b65fd48f0.mp4
+
