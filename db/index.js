@@ -26,14 +26,14 @@ class DB {
             'INSERT INTO department (name) VALUES (?)',[name]
         )
     }
-    addRole(title) {
+    addRole(role) {
         return this.connection.promise().query( 
-            'INSERT INTO role (title) VALUES (?)',employee
+            'INSERT INTO role SET ?',[role]
         )
     }
-    addEmployee(title) {
+    addEmployee(employee) {
         return this.connection.promise().query( 
-            'INSERT INTO employees SET ?',[title]
+            'INSERT INTO employees SET ?',[employee]
         )
     }
 }

@@ -1,7 +1,8 @@
+// requiring the database
 const { prompt } = require("inquirer");
 const db = require("./db");
 
-
+// The main menu function starts the function
 function mainMenu() {
     prompt([
         {
@@ -73,7 +74,7 @@ function mainMenu() {
         }
     })
 }
-
+// view employees, roles and departments
 function viewEmployees() {
     db.findAllEmployees()
         .then(([rows]) => {
@@ -105,7 +106,7 @@ function viewDepartments() {
 }
 
 
-
+// add employees departments roles
 
 function addEmployee() {
     prompt([
@@ -130,19 +131,19 @@ function addEmployee() {
             name: "addEmployMan"
         }
     ])
-    .then(answer => {
-    let employee = {
-        first_name: answer.firstName,
-        last_name: answer.lastName,
-        role_id: answer.addEmployRole,
-        manager_id: answer.addEmployMan,
+        .then(answer => {
+            let employee = {
+                first_name: answer.firstName,
+                last_name: answer.lastName,
+                role_id: answer.addEmployRole,
+                manager_id: answer.addEmployMan,
 
-    }
-        db.addEmployee(employee)
-            .then(() => console.log('successfullyadded'))
-            .then(() => mainMenu());
+            }
+            db.addEmployee(employee)
+                .then(() => console.log('successfullyadded'))
+                .then(() => mainMenu());
 
-    });
+        });
 }
 function addDept() {
     prompt({
@@ -167,30 +168,30 @@ function addRole() {
         {
             type: "input",
             message: "Enter the employee's title",
-            name: "roleTitle"
+            name: "title"
         },
         {
             type: "input",
             message: "Enter the employee's salary",
-            name: "roleSalary"
+            name: "salary"
         },
         {
             type: "input",
             message: "Enter the employee's department ID",
-            name: "roleDept"
+            name: "department_id "
         }
     ])
-    .then((answer) => {
+        .then(answer => {
+            let role = {
+                title: answer.title,
+                salary: answer.salary,
+                department_id: answer.department_id,
+            }
+            db.addRole(role)
+                .then(() => console.log('successfullyadded'))
+                .then(() => mainMenu());
 
-        db.addRole(answer.newRole)
-            .then(([rows]) => {
-                let roles = rows;
-                console.log("/n");
-                console.table(roles)
-            })
-            .then(() => mainMenu());
-
-    });
+        });
 }
 function updateEmployeeRole() {
     prompt([
